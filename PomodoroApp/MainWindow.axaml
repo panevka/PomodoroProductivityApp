@@ -1,9 +1,25 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="PomodoroApp.MainWindow"
-        Title="PomodoroApp">
-    Welcome to Avalonia!
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:PomodoroApp"
+    mc:Ignorable="d" Width="700" Height="500"
+    x:Class="PomodoroApp.MainWindow"
+    Title="PomodoroApp">
+
+    <Grid ColumnDefinitions="50,*,50" RowDefinitions="80,*,80" Background="#241f31" >
+            
+                <Border Grid.Column="1" Margin="10" CornerRadius="50" Background="#4b0082">
+                
+                    <TextBlock Margin="10" FontSize="20"
+                    Foreground="#ffffff"
+                    Text="pomodoro app">
+                    </TextBlock>
+                
+                </Border>
+                
+                <views:Timer Grid.Column="1" Grid.Row="1"/>
+               
+
+    </Grid>
 </Window>
