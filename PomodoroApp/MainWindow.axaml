@@ -19,7 +19,12 @@
                 </Border>
                 
                 <views:Timer Grid.Column="1" Grid.Row="1"/>
-               
+                
+                <!-- <Path stretch="uniform" width="60" height="60" fill="#4b0082" data="m 200,150 -->
+                <!--     l 50,50 -->
+                <!--     l 50,250 -->
+                <!--     z" /> -->
+                <!-- -->
 
     </Grid>
 </Window>
