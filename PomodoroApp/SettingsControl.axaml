@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="PomodoroApp.SettingsControl">
+    
+    <UserControl.Styles>
+        <Style Selector="Grid#SettingsLayout">
+            <Setter Property="Background" Value="#4b0082"/>
+        </Style>
+        <Style Selector="Border#BackgroundOverlay">
+            <Setter Property="Background" Value="#40000000"/>
+        </Style>
+        
+        <Style Selector="Border#RoundingBorder">
+            <Setter Property="Background" Value="#4b0082"/>
+            <Setter Property="CornerRadius" Value="30"/>
+        </Style>
+        
+        <Style Selector="TextBlock.setting_description">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+        </Style>
+        
+        <Style Selector="TextBlock#SettingsHeader">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+        </Style>
+        
+    </UserControl.Styles>
+    <Border Name="BackgroundOverlay">
+        <Border Name="RoundingBorder" CornerRadius="30" Width="450" Height="350">
+            
+            <Grid Name="SettingsLayout" RowDefinitions="3*, 2*, 2*, 2*, 1*" ColumnDefinitions="*"  Width="400" Height="350">
+               
+                <TextBlock Name="SettingsHeader" Grid.Row="0" Text="Settings" HorizontalAlignment="Center"/>
+                
+                <StackPanel Grid.Row="1">
+                    <TextBlock Classes="setting_description" 
+                               Text="{Binding #WorkSessionSlider.Value, StringFormat='Work session duration: {0}'}"/>
+                    
+                    <Slider Name="WorkSessionSlider" Value="25" Minimum="1" Maximum="720" IsSnapToTickEnabled="True" TickFrequency="1"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="2">
+                    <TextBlock Classes="setting_description" 
+                               Text="{Binding #ShortBreakSlider.Value, StringFormat='Short break duration: {0}'}"/>
+                    <Slider Name="ShortBreakSlider" Value="25" Minimum="1" Maximum="720" IsSnapToTickEnabled="True" TickFrequency="1"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="3">
+                    <TextBlock Classes="setting_description" 
+                               Text="{Binding #LongBreakSlider.Value, StringFormat='Long break duration: {0}'}"/>
+                    <Slider Name="LongBreakSlider" Value="25" Minimum="1" Maximum="720" IsSnapToTickEnabled="True" TickFrequency="1"/>
+                </StackPanel>
+               
+                
+            </Grid>
+         
+        </Border>
+        
+    </Border>
+ 
+    
+</UserControl>
