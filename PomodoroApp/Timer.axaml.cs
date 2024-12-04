@@ -12,7 +12,7 @@ public partial class Timer : UserControl
     public Timer()
     {
         InitializeComponent();
-        StartTimerCountDown(Time, 6080);
+        StartTimerCountDown(Time, SettingsManager.LoadSettings().WorkSessionDuration*60);
 
     }
 
