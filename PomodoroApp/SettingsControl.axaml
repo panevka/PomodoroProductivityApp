@@ -28,6 +28,19 @@
             <Setter Property="Foreground" Value="#ffffff"/>
         </Style>
         
+        <Style Selector="TextBlock.button_description">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+        </Style>
+        
+        <Style Selector="Button#SaveButton">
+            <Setter Property="Background" Value="#0A9214"/>
+        </Style>
+        
+        <Style Selector="Button#CloseButton">
+            <Setter Property="Background" Value="#920D1D"/>
+        </Style>
+        
     </UserControl.Styles>
     <Border Name="BackgroundOverlay">
         <Border Name="RoundingBorder" CornerRadius="30" Width="450" Height="350">
@@ -54,7 +67,15 @@
                                Text="{Binding #LongBreakSlider.Value, StringFormat='Long break duration: {0}'}"/>
                     <Slider Name="LongBreakSlider" Value="25" Minimum="1" Maximum="720" IsSnapToTickEnabled="True" TickFrequency="1"/>
                 </StackPanel>
-               
+               <StackPanel Orientation="Horizontal" Spacing="15" Grid.Row="4" VerticalAlignment="Center" 
+                           HorizontalAlignment="Center">
+                   <Button Name="SaveButton" >
+                       <TextBlock Classes="button_description" Text="Save"/> 
+                   </Button>
+                   <Button Name="CloseButton">
+                       <TextBlock Classes="button_description" Text="Close"/> 
+                   </Button>
+               </StackPanel>
                 
             </Grid>
          
