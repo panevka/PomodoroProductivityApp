@@ -4,13 +4,50 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="300"
              x:Class="PomodoroApp.Timer">
+    
+    <UserControl.Styles>
+        <Style Selector="Button.StartButton">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid>
+                        <Path Data="M440.415,583.554 L421.418,571.311 C420.291,570.704 419,570.767 419,572.946 L419,597.054 C419,599.046 420.385,599.36 421.418,598.689 L440.415,586.446 C441.197,585.647 441.197,584.353 440.415,583.554"
+                              Fill="{TemplateBinding Background}"
+                              Stretch="Uniform"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.PauseButton">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid>
+                        <Rectangle Fill="Transparent"/>
+                        <Path Data="M7 1H2V15H7V1Z M14 1H9V15H14V1Z" Fill="{TemplateBinding Background}"
+                              Stretch="Uniform"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+
+    
     <Panel Height="300" Width="300">
         
         <Ellipse Fill="Indigo" Width="300" Height="300" HorizontalAlignment="Center"
                  VerticalAlignment="Center"/>
         
         <TextBlock Name="Time" Foreground="White" FontSize="60" HorizontalAlignment="Center" 
-                   VerticalAlignment="Center">25:00</TextBlock>
+                   VerticalAlignment="Center" Text="25:00"/>
+        
+        <Button Name="TimerButton" Classes="StartButton" Height="50" Margin="10" Background="#a212b8" BorderBrush="#ffffff" HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"/>
+      
     </Panel>
   
 </UserControl>
