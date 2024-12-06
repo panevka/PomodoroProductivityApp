@@ -10,9 +10,9 @@ namespace PomodoroApp;
 
 public partial class SettingsControl : UserControl
 {
-    private int _workSessionDuration;
-    private int _shortBreakDuration;
-    private int _longBreakDuration;
+    private int _workSessionDuration = SettingsManager.LoadSettings().WorkSessionDuration;
+    private int _shortBreakDuration = SettingsManager.LoadSettings().ShortBreakDuration;
+    private int _longBreakDuration = SettingsManager.LoadSettings().LongBreakDuration;
 
     public int WorkSessionDuration
     {
@@ -35,6 +35,9 @@ public partial class SettingsControl : UserControl
     public SettingsControl()
     {
         InitializeComponent();
+        WorkSessionSlider.Value = WorkSessionDuration;
+        ShortBreakSlider.Value = ShortBreakDuration;
+        LongBreakSlider.Value = LongBreakDuration;
         
         SaveButton.Click += SaveSettingsButton_Click;
 
