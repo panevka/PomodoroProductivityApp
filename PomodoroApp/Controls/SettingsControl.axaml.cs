@@ -13,7 +13,11 @@ public partial class SettingsControl : UserControl
     private int _workSessionDuration = SettingsManager.LoadSettings().WorkSessionDuration;
     private int _shortBreakDuration = SettingsManager.LoadSettings().ShortBreakDuration;
     private int _longBreakDuration = SettingsManager.LoadSettings().LongBreakDuration;
-    public MainWindow ParentControl { get; set; }
+    public delegate void SettingsSavedEventHandler ();
+    public delegate void SettingsClosedEventHandler ();
+    public event SettingsClosedEventHandler SettingsClosed;
+    public event SettingsSavedEventHandler? SettingsSaved;
+    
     public int WorkSessionDuration
     {
         get => _workSessionDuration;
@@ -39,8 +43,8 @@ public partial class SettingsControl : UserControl
         ShortBreakSlider.Value = ShortBreakDuration;
         LongBreakSlider.Value = LongBreakDuration;
         
-        SaveButton.Click += SaveSettingsButton_Click;
-        CloseButton.Click += CloseSettingsButton_Click;
+        SaveButton.Click += OnSaveButtonClick;
+        CloseButton.Click += OnCloseButtonClick;
 
         WorkSessionSlider.ValueChanged += (sender, args) =>
         {
@@ -58,15 +62,14 @@ public partial class SettingsControl : UserControl
         };
     }
 
-    private void SaveSettingsButton_Click(object? sender, RoutedEventArgs e)
+    private void OnSaveButtonClick(object? sender, RoutedEventArgs e)
     {
         SettingsManager.SaveSettings(new AppSettings(WorkSessionDuration, ShortBreakDuration, LongBreakDuration));
+        SettingsSaved?.Invoke();
     }
-    private void CloseSettingsButton_Click(object? sender, RoutedEventArgs e)
+    private void OnCloseButtonClick(object? sender, RoutedEventArgs e)
     {
-        IsVisible = false;
-        ParentControl.SettingsButton.IsEnabled = !this.IsVisible;
-        ParentControl.SettingsButton.Opacity = 1;
+        SettingsClosed?.Invoke();
     }
     
 }

@@ -26,4 +26,8 @@ public partial class TimerControl : UserControl
         };
 
     }
+    public void ReloadTimerSettings()
+    {
+        _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().WorkSessionDuration*60);
+    }
 }

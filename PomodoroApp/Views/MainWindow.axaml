@@ -16,7 +16,7 @@
                     Text="pomodoro app"/>
                 </Border>
                 
-                <views:TimerControl VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <views:TimerControl Name="TimerControl" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <views:SettingsControl Name="SettingsControl" IsVisible="False"/>
                
                 <Button Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom"

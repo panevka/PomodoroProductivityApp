@@ -10,16 +10,21 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         SettingsButton.Click += SettingsButton_OnClick;
-        var SettingsPanel = this.FindControl<SettingsControl>("SettingsControl");
-        SettingsPanel.ParentControl = this;
+        SettingsControl.SettingsSaved += TimerControl.ReloadTimerSettings;
+        SettingsControl.SettingsClosed += OnSettingsClosed;
     }
 
     private void SettingsButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        SettingsControl.IsVisible = !SettingsControl.IsVisible;
-        SettingsButton.IsEnabled = !SettingsControl.IsVisible;
-        SettingsButton.Opacity = SettingsControl.IsVisible ? 0.3 : 1;
+        SettingsControl.IsVisible = true;
+        SettingsButton.IsEnabled = false;
+        SettingsButton.Opacity = 0.3;
     }
-
    
+    private void OnSettingsClosed()
+    {
+        SettingsControl.IsVisible = false;
+        SettingsButton.IsEnabled = true;
+        SettingsButton.Opacity = 1;
+    }
 }
