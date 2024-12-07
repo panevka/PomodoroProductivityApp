@@ -56,6 +56,13 @@ public class TimerManager
         }
     }
 
+    public void ChangeTimerInitialTime(int newInitialTime)
+    {
+        StopTimer();
+        _currentTime = newInitialTime;
+        UpdateTimerDisplay();
+    }
+
     private async Task TimerCountdownTask(CancellationToken cancellationToken)
     {
         while (_currentTime > 0)
