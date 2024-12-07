@@ -2,10 +2,10 @@ using Avalonia.Controls;
 
 namespace PomodoroApp;
 
-public partial class Timer : UserControl
+public partial class TimerControl : UserControl
 {
     private TimerManager _timer;
-    public Timer()
+    public TimerControl()
     {
         InitializeComponent();
         _timer = new TimerManager(Time, SettingsManager.LoadSettings().WorkSessionDuration * 60);
