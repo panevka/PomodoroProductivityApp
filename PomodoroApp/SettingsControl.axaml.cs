@@ -13,7 +13,7 @@ public partial class SettingsControl : UserControl
     private int _workSessionDuration = SettingsManager.LoadSettings().WorkSessionDuration;
     private int _shortBreakDuration = SettingsManager.LoadSettings().ShortBreakDuration;
     private int _longBreakDuration = SettingsManager.LoadSettings().LongBreakDuration;
-
+    public MainWindow ParentControl { get; set; }
     public int WorkSessionDuration
     {
         get => _workSessionDuration;
@@ -40,6 +40,7 @@ public partial class SettingsControl : UserControl
         LongBreakSlider.Value = LongBreakDuration;
         
         SaveButton.Click += SaveSettingsButton_Click;
+        CloseButton.Click += CloseSettingsButton_Click;
 
         WorkSessionSlider.ValueChanged += (sender, args) =>
         {
@@ -61,6 +62,11 @@ public partial class SettingsControl : UserControl
     {
         SettingsManager.SaveSettings(new AppSettings(WorkSessionDuration, ShortBreakDuration, LongBreakDuration));
     }
-    
+    private void CloseSettingsButton_Click(object? sender, RoutedEventArgs e)
+    {
+        IsVisible = false;
+        ParentControl.SettingsButton.IsEnabled = !this.IsVisible;
+        ParentControl.SettingsButton.Opacity = 1;
+    }
     
 }
