@@ -29,5 +29,9 @@ public partial class TimerControl : UserControl
     public void ReloadTimerSettings()
     {
         _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().WorkSessionDuration*60);
+        TimerButton.Classes.Remove("PauseButton");
+        TimerButton.Classes.Add("StartButton");
+        
+        
     }
 }
