@@ -13,7 +13,7 @@ public class TimerManager
     private readonly object _lock = new();
     private CancellationTokenSource _cancellationTokenSource;
     
-    public TimerManager(TextBlock timerTextBlock, int timerBaseTime)
+    public TimerManager(TextBlock timerTextBlock, int timerBaseTime=0)
     {
         _currentTime = timerBaseTime;
         _timerTextBlock = timerTextBlock;
