@@ -13,7 +13,7 @@
                         Background="#4b0082">
                     <TextBlock Margin="10" FontSize="20"
                     Foreground="#ffffff"
-                    Text="pomodoro app"/>
+                    Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
                 
                 <views:TimerControl Name="TimerControl" VerticalAlignment="Center" HorizontalAlignment="Center" />
