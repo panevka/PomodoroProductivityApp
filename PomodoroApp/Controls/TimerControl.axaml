@@ -6,6 +6,30 @@
              x:Class="PomodoroApp.TimerControl">
     
     <UserControl.Styles>
+        <Style Selector="Button#RefreshButton">
+            <Setter Property="Template">
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Svg Path="/Assets/refresh-icon.svg" Width="30" Height="30" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style Selector="Button.rotating">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="180"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
         <Style Selector="Button.StartButton">
             <Setter Property="Template">
                 <ControlTemplate>
@@ -44,6 +68,8 @@
         
         <TextBlock Name="Time" Foreground="White" FontSize="60" HorizontalAlignment="Center" 
                    VerticalAlignment="Center" Text="" FontFamily="Monaspace"/>
+        
+        <Button Name="RefreshButton" Height="30" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         
         <Button Name="TimerButton" Classes="StartButton" Height="50" Margin="10" Background="#a212b8" BorderBrush="#ffffff" HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"/>

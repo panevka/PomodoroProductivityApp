@@ -16,6 +16,12 @@ public partial class TimerControl : UserControl
         InitializeComponent();
         _timer = new TimerManager(Time);
         _session = new SessionManager(_timer);
+        RefreshButton.Click += (sender, args) =>
+        {
+            RefreshButton.Classes.Clear();
+            RefreshButton.Classes.Add("rotating");
+            ReloadTimerSettings();
+        };
         
         TimerButton.Click += (sender, args) =>
         {
