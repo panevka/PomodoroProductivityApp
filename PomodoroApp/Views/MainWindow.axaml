@@ -11,7 +11,7 @@
             
                 <Border VerticalAlignment="Top" Height="50" Margin="10" CornerRadius="50"
                         Background="#4b0082">
-                    <TextBlock Margin="10" FontSize="20"
+                    <TextBlock Name="Header" Margin="10" FontSize="20"
                     Foreground="#ffffff"
                     Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
