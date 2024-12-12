@@ -14,8 +14,9 @@ public class SessionManager
         SwitchSessionType(SessionType.Work);
         _timer.TimerFinished += PomodoroSessionSwitch;
     }
-        
-    public event EventHandler SessionSwitched;
+
+    public delegate void SessionSwitchedEventHandler();
+    public event SessionSwitchedEventHandler SessionSwitched;
 
     public void PomodoroSessionSwitch(object? obj, EventArgs e)
     {
@@ -58,7 +59,7 @@ public class SessionManager
                 break;
         }
         _currentSession = newSessionType;
-        SessionSwitched?.Invoke(this, EventArgs.Empty);
+        SessionSwitched?.Invoke();
     }
 
     public SessionType GetCurrentSessionType()
