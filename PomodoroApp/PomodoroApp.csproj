@@ -22,6 +22,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <AvaloniaResource Include="Assets/**/*" />
+    </ItemGroup>
+    
+    <ItemGroup>
       <Compile Update="Controls\TimerControl.axaml.cs">
         <DependentUpon>Timer.axaml</DependentUpon>
         <SubType>Code</SubType>
