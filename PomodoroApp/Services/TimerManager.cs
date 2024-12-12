@@ -12,13 +12,15 @@ public class TimerManager
     private bool _isPaused = true;
     private readonly object _lock = new();
     private CancellationTokenSource _cancellationTokenSource;
-    
+  
     public TimerManager(TextBlock timerTextBlock, int timerBaseTime=0)
     {
         _currentTime = timerBaseTime;
         _timerTextBlock = timerTextBlock;
         UpdateTimerDisplay();
     }
+      
+    public event EventHandler TimerFinished;
     
     public bool IsPaused => _isPaused;
     public bool IsRunning => !_isPaused;
@@ -42,6 +44,7 @@ public class TimerManager
             {
                 _isPaused = true;
                 _cancellationTokenSource = null;
+                _currentTime = 0;
             }
         }
     }
@@ -59,13 +62,13 @@ public class TimerManager
     public void ChangeTimerInitialTime(int newInitialTime)
     {
         StopTimer();
-        _currentTime = newInitialTime;
+        Interlocked.Exchange(ref _currentTime, newInitialTime);
         UpdateTimerDisplay();
     }
 
     private async Task TimerCountdownTask(CancellationToken cancellationToken)
     {
-        while (_currentTime > 0)
+        while (_currentTime >= 0)
         {
             cancellationToken.ThrowIfCancellationRequested();
             await Task.Delay(1000, cancellationToken);
@@ -76,6 +79,7 @@ public class TimerManager
         {
             _isPaused = true;
         }
+        TimerFinished?.Invoke(this, EventArgs.Empty);
     }
 
     private void UpdateTimerDisplay()
