@@ -44,7 +44,6 @@ public class TimerManager
             {
                 _isPaused = true;
                 _cancellationTokenSource = null;
-                _currentTime = 0;
             }
         }
     }
@@ -75,11 +74,11 @@ public class TimerManager
             Interlocked.Decrement(ref _currentTime);
             UpdateTimerDisplay();
         }
-        lock (_lock)
+
+        if (!cancellationToken.IsCancellationRequested)
         {
-            _isPaused = true;
+            TimerFinished?.Invoke(this, EventArgs.Empty);
         }
-        TimerFinished?.Invoke(this, EventArgs.Empty);
     }
 
     private void UpdateTimerDisplay()
