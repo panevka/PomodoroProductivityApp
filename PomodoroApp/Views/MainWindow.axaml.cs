@@ -11,13 +11,14 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        ChangeHeaderSessionAnnouncement();
         SettingsButton.Click += SettingsButton_OnClick;
         SettingsControl.SettingsSaved += TimerControl.ReloadTimerSettings;
         SettingsControl.SettingsClosed += OnSettingsClosed;
-        TimerControl.Session.SessionSwitched += OnSessionSwitched;
+        TimerControl.Session.SessionSwitched += ChangeHeaderSessionAnnouncement;
     }
 
-    private void OnSessionSwitched(object? sender, EventArgs e)
+    private void ChangeHeaderSessionAnnouncement()
     {
         SessionType currentSessionType = TimerControl.Session.GetCurrentSessionType();
         
