@@ -5,10 +5,18 @@ namespace PomodoroApp;
 public partial class TimerControl : UserControl
 {
     private TimerManager _timer;
+    private SessionManager _session;
+
+    public SessionManager Session
+    {
+        get => _session;
+    }
     public TimerControl()
     {
         InitializeComponent();
-        _timer = new TimerManager(Time, SettingsManager.LoadSettings().WorkSessionDuration * 60);
+        _timer = new TimerManager(Time);
+        _session = new SessionManager(_timer);
+        
         TimerButton.Click += (sender, args) =>
         {
             if (_timer.IsRunning)
@@ -31,7 +39,5 @@ public partial class TimerControl : UserControl
         _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().WorkSessionDuration*60);
         TimerButton.Classes.Remove("PauseButton");
         TimerButton.Classes.Add("StartButton");
-        
-        
     }
 }
