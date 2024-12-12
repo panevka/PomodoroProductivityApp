@@ -39,26 +39,26 @@ public partial class SettingsControl : UserControl
     public SettingsControl()
     {
         InitializeComponent();
-        WorkSessionSlider.Value = WorkSessionDuration;
-        ShortBreakSlider.Value = ShortBreakDuration;
-        LongBreakSlider.Value = LongBreakDuration;
-        
+        InitializeDefaultValues();
         SaveButton.Click += OnSaveButtonClick;
         CloseButton.Click += OnCloseButtonClick;
 
         WorkSessionSlider.ValueChanged += (sender, args) =>
         {
             WorkSessionDuration = (int)args.NewValue;
+            WorkSessionTextBox.Text = ConvertValueToHourRepresentative(WorkSessionDuration);
         };
         
         ShortBreakSlider.ValueChanged += (sender, args) =>
         {
             ShortBreakDuration = (int)args.NewValue;
+            ShortBreakTextBox.Text = ConvertValueToHourRepresentative(ShortBreakDuration);
         };
 
         LongBreakSlider.ValueChanged += (sender, args) =>
         {
             LongBreakDuration = (int)args.NewValue;
+            LongBreakTextBox.Text = ConvertValueToHourRepresentative(LongBreakDuration);
         };
     }
 
@@ -70,6 +70,33 @@ public partial class SettingsControl : UserControl
     private void OnCloseButtonClick(object? sender, RoutedEventArgs e)
     {
         SettingsClosed?.Invoke();
+    }
+
+    private string ConvertValueToHourRepresentative(int sliderValue)
+    {
+        int hours = Convert.ToInt32(sliderValue / 60);
+        int minutes = sliderValue % 60;
+        
+        if (hours == 0)
+        {
+            return $"{minutes + " m"}";
+        }
+        if (minutes == 0)
+        {
+            return $"{hours + " h"}";
+        }
+        return $"{hours  + "h " }{minutes + " m"}";
+    }
+
+    private void InitializeDefaultValues()
+    {
+        WorkSessionSlider.Value = WorkSessionDuration;
+        ShortBreakSlider.Value = ShortBreakDuration;
+        LongBreakSlider.Value = LongBreakDuration;
+        
+        WorkSessionTextBox.Text = ConvertValueToHourRepresentative(WorkSessionDuration);
+        ShortBreakTextBox.Text = ConvertValueToHourRepresentative(ShortBreakDuration);
+        LongBreakTextBox.Text = ConvertValueToHourRepresentative(LongBreakDuration);
     }
     
 }

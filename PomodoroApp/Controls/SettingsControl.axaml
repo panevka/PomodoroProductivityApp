@@ -50,21 +50,32 @@
                 <TextBlock Name="SettingsHeader" Grid.Row="0" Text="Settings" HorizontalAlignment="Center"/>
                 
                 <StackPanel Grid.Row="1">
-                    <TextBlock Classes="setting_description" 
-                               Text="{Binding #WorkSessionSlider.Value, StringFormat='Work session duration: {0}'}"/>
+                    <WrapPanel>
+                        <TextBlock Name="WorkSessionDesc" Classes="setting_description" Text="Work session duration: " />
+                        <TextBlock Name="WorkSessionTextBox" Classes="setting_description" Text="" />
+                    </WrapPanel>
                     
                     <Slider Name="WorkSessionSlider" Value="25" Minimum="1" Maximum="720" IsSnapToTickEnabled="True" TickFrequency="1"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Row="2">
-                    <TextBlock Classes="setting_description" 
-                               Text="{Binding #ShortBreakSlider.Value, StringFormat='Short break duration: {0}'}"/>
+                    <WrapPanel>
+                        <TextBlock Name="ShortBreakDesc" Classes="setting_description" 
+                                   Text="Short break duration: "/>
+                        <TextBlock Name="ShortBreakTextBox" Classes="setting_description" 
+                                   Text=""/>
+                    </WrapPanel>
                     <Slider Name="ShortBreakSlider" Value="25" Minimum="1" Maximum="720" IsSnapToTickEnabled="True" TickFrequency="1"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Row="3">
-                    <TextBlock Classes="setting_description" 
-                               Text="{Binding #LongBreakSlider.Value, StringFormat='Long break duration: {0}'}"/>
+                    <WrapPanel>
+                        <TextBlock Name="LongBreakDesc" Classes="setting_description" 
+                                   Text="Long break duration: "/>
+                        <TextBlock Name="LongBreakTextBox" Classes="setting_description" 
+                                   Text=""/>
+                    </WrapPanel>
+                   
                     <Slider Name="LongBreakSlider" Value="25" Minimum="1" Maximum="720" IsSnapToTickEnabled="True" TickFrequency="1"/>
                 </StackPanel>
                <StackPanel Orientation="Horizontal" Spacing="15" Grid.Row="4" VerticalAlignment="Center" 
