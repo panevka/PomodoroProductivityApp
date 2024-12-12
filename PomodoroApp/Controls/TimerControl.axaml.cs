@@ -36,7 +36,18 @@ public partial class TimerControl : UserControl
     }
     public void ReloadTimerSettings()
     {
-        _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().WorkSessionDuration*60);
+        switch (_session.GetCurrentSessionType())
+        {
+            case SessionType.Work:
+                _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().WorkSessionDuration*60);
+                break;
+            case SessionType.ShortBreak:
+                _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().ShortBreakDuration);
+                break;
+            case SessionType.LongBreak:
+                _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().LongBreakDuration);
+                break;
+        }
         TimerButton.Classes.Remove("PauseButton");
         TimerButton.Classes.Add("StartButton");
     }
