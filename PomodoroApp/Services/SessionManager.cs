@@ -59,11 +59,11 @@ public class SessionManager
                 else
                 {
                     SwitchSessionType(SessionType.ShortBreak);
+                    _cycleCounter--;
                 }
                 break;
             case SessionType.ShortBreak:
                 SwitchSessionType(SessionType.Work);
-                _cycleCounter--;
                 break;
             case SessionType.LongBreak:
                 SwitchSessionType(SessionType.Work);
