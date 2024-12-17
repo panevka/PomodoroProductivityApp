@@ -48,10 +48,10 @@ public partial class TimerControl : UserControl
                 _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().WorkSessionDuration*60);
                 break;
             case SessionType.ShortBreak:
-                _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().ShortBreakDuration);
+                _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().ShortBreakDuration*60);
                 break;
             case SessionType.LongBreak:
-                _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().LongBreakDuration);
+                _timer.ChangeTimerInitialTime(SettingsManager.LoadSettings().LongBreakDuration*60);
                 break;
         }
         TimerButton.Classes.Remove("PauseButton");
