@@ -7,41 +7,13 @@
     x:Class="PomodoroApp.MainWindow"
     Title="PomodoroApp">
     
-    <!-- <Grid Background="#241f31" > -->
-    <!--             <Border VerticalAlignment="Top" Height="50" Margin="10" CornerRadius="50" -->
-    <!--                     Background="#4b0082"> -->
-    <!--                 <TextBlock Name="Header" Margin="10" FontSize="20" -->
-    <!--                 Foreground="#ffffff" -->
-    <!--                 Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
-    <!--             </Border> -->
-    <!--              -->
-    <!--             <Button Name="PreviousSession" VerticalAlignment="Center" HorizontalAlignment="Left"  -->
-    <!--                     Margin="50"> -->
-    <!--                 <TextBlock Text="Previous session" Foreground="#ffffff"/> -->
-    <!--             </Button> -->
-    <!--             <Button Name="NextSession" VerticalAlignment="Center" HorizontalAlignment="Right"  -->
-    <!--                     Margin="50"> -->
-    <!--                 <TextBlock Text="Next session" Foreground="#ffffff"/> -->
-    <!--             </Button> -->
-    <!--             <views:TimerControl Name="TimerControl" VerticalAlignment="Center" HorizontalAlignment="Center" /> -->
-    <!--             <views:SettingsControl Name="SettingsControl" IsVisible="False"/> -->
-    <!--             -->
-    <!--             <Button Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" -->
-    <!--                     Height="50" Width="80" Margin="20"> -->
-    <!--                 <TextBlock Foreground="#ffffff" HorizontalAlignment="Center"  -->
-    <!--                            VerticalAlignment="Center" Text="Settings"/> -->
-    <!--                  -->
-    <!--             </Button> -->
-    <!-- </Grid> -->
-    
     <Grid>
         <Grid Background="#241f31" RowDefinitions="2*, 6*, 2*" ColumnDefinitions="2*, 6*, 2*">
         
         <Viewbox Grid.Row="0" Grid.Column="1" Stretch="Uniform">
                     <TextBlock Name="Header" Margin="10" FontSize="30"
                                Foreground="#ffffff"
-                               Text="" HorizontalAlignment="Center" VerticalAlignment="Center"
-                    />
+                               Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
         
         <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
