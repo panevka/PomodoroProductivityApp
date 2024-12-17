@@ -6,36 +6,88 @@
     mc:Ignorable="d" Width="700" Height="500"
     x:Class="PomodoroApp.MainWindow"
     Title="PomodoroApp">
-
-    <Grid Background="#241f31" >
+    
+    <!-- <Grid Background="#241f31" > -->
+    <!--             <Border VerticalAlignment="Top" Height="50" Margin="10" CornerRadius="50" -->
+    <!--                     Background="#4b0082"> -->
+    <!--                 <TextBlock Name="Header" Margin="10" FontSize="20" -->
+    <!--                 Foreground="#ffffff" -->
+    <!--                 Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+    <!--             </Border> -->
+    <!--              -->
+    <!--             <Button Name="PreviousSession" VerticalAlignment="Center" HorizontalAlignment="Left"  -->
+    <!--                     Margin="50"> -->
+    <!--                 <TextBlock Text="Previous session" Foreground="#ffffff"/> -->
+    <!--             </Button> -->
+    <!--             <Button Name="NextSession" VerticalAlignment="Center" HorizontalAlignment="Right"  -->
+    <!--                     Margin="50"> -->
+    <!--                 <TextBlock Text="Next session" Foreground="#ffffff"/> -->
+    <!--             </Button> -->
+    <!--             <views:TimerControl Name="TimerControl" VerticalAlignment="Center" HorizontalAlignment="Center" /> -->
+    <!--             <views:SettingsControl Name="SettingsControl" IsVisible="False"/> -->
+    <!--             -->
+    <!--             <Button Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" -->
+    <!--                     Height="50" Width="80" Margin="20"> -->
+    <!--                 <TextBlock Foreground="#ffffff" HorizontalAlignment="Center"  -->
+    <!--                            VerticalAlignment="Center" Text="Settings"/> -->
+    <!--                  -->
+    <!--             </Button> -->
+    <!-- </Grid> -->
+    
+    <Grid>
+        <Grid Background="#241f31" RowDefinitions="2*, 6*, 2*" ColumnDefinitions="2*, 6*, 2*">
+        
+        <Viewbox Grid.Row="0" Grid.Column="1" Stretch="Uniform">
+                    <TextBlock Name="Header" Margin="10" FontSize="30"
+                               Foreground="#ffffff"
+                               Text="" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    />
+        </Viewbox>
+        
+        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
+            <Grid RowDefinitions="*" ColumnDefinitions="*">
+                <views:TimerControl Name="TimerControl" 
+                                    VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <Viewbox MaxHeight="600" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform">
+                    <views:SettingsControl Name="SettingsControl" IsVisible="False"/>
+                </Viewbox>
+            </Grid>
+        </Viewbox>
             
-                <Border VerticalAlignment="Top" Height="50" Margin="10" CornerRadius="50"
-                        Background="#4b0082">
-                    <TextBlock Name="Header" Margin="10" FontSize="20"
-                    Foreground="#ffffff"
-                    Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Border>
-                
-                <Button Name="PreviousSession" VerticalAlignment="Center" HorizontalAlignment="Left" 
-                        Margin="50" Height="50" Width="50">
-                    <TextBlock Text="Prev" Foreground="#ffffff"/>
+            <Viewbox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Name="PreviousSession"  Margin="20"
+                        Height="50" Width="100" CornerRadius="10"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBlock Text="Previous session"
+                               FontSize="15"
+                               Foreground="#ffffff"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
                 </Button>
-                <Button Name="NextSession" VerticalAlignment="Center" HorizontalAlignment="Right" 
-                        Margin="50">
-                    <TextBlock Text="Next" Foreground="#ffffff"/>
-                </Button>
-                <views:TimerControl Name="TimerControl" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <views:SettingsControl Name="SettingsControl" IsVisible="False"/>
-               
-                <Button Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                        Height="50" Width="80" Margin="20">
-                    <TextBlock Foreground="#ffffff" HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" Text="Settings"/>
-                    
-                </Button>
-                
-                
-                
+            </Viewbox>
 
+            <Viewbox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Name="NextSession"
+                        Height="50" Width="100" CornerRadius="10" Margin="20"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBlock Text="Next session"
+                               FontSize="15"
+                               Foreground="#ffffff"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Button>
+            </Viewbox>
+            
+        <Button Grid.Row="2" Grid.Column="2" Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Height="50" Width="80" Margin="20">
+            <TextBlock Foreground="#ffffff" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Text="Settings"/>
+        
+        </Button>
+    </Grid>
     </Grid>
 </Window>

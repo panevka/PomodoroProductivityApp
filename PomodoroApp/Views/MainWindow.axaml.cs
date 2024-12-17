@@ -38,13 +38,13 @@ public partial class MainWindow : Window
         switch (currentSessionType)
         {
             case SessionType.Work:
-                Header.Text = "Work Session Running";
+                Header.Text = "Work";
                 break;
             case SessionType.ShortBreak:
-                Header.Text = "Short-Break Session Running";
+                Header.Text = "Short-Break";
                 break;
             case SessionType.LongBreak:
-                Header.Text = "Long-Break Session Running";
+                Header.Text = "Long-Break";
                 break;
         }
     }
