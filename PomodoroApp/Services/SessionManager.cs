@@ -12,13 +12,17 @@ public class SessionManager
     {
         _timer = timer;
         SwitchSessionType(SessionType.Work);
-        _timer.TimerFinished += PomodoroSessionSwitch;
+        _timer.TimerFinished += (sender, args) =>
+        {
+            SwitchToNextSession();
+            _timer.StartTimer();
+        };
     }
 
     public delegate void SessionSwitchedEventHandler();
     public event SessionSwitchedEventHandler SessionSwitched;
 
-    public void PomodoroSessionSwitch(object? obj, EventArgs e)
+    public void SwitchToNextSession()
     {
         if (_cycleCounter == 4)
         {
@@ -41,7 +45,31 @@ public class SessionManager
                     break;
             }
         }
-        _timer.StartTimer();
+    }
+    
+    public void SwitchToPreviousSession()
+    {
+        switch (_currentSession)
+        {
+            case SessionType.Work:
+                if (_cycleCounter == 0)
+                {
+                    SwitchSessionType(SessionType.LongBreak);
+                }
+                else
+                {
+                    SwitchSessionType(SessionType.ShortBreak);
+                }
+                break;
+            case SessionType.ShortBreak:
+                SwitchSessionType(SessionType.Work);
+                _cycleCounter--;
+                break;
+            case SessionType.LongBreak:
+                SwitchSessionType(SessionType.Work);
+                _cycleCounter = 4;
+                break;
+        }
     }
     
     private void SwitchSessionType(SessionType newSessionType)
