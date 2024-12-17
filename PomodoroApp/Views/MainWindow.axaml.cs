@@ -16,6 +16,19 @@ public partial class MainWindow : Window
         SettingsControl.SettingsSaved += TimerControl.ReloadTimerSettings;
         SettingsControl.SettingsClosed += OnSettingsClosed;
         TimerControl.Session.SessionSwitched += ChangeHeaderSessionAnnouncement;
+        PreviousSession.Click += (sender, args) =>
+        {
+            TimerControl.Session.SwitchToPreviousSession();
+            TimerControl.TimerButton.Classes.Remove("PauseButton");
+            TimerControl.TimerButton.Classes.Add("StartButton");
+        };
+        NextSession.Click += (sender, args) =>
+        {
+            TimerControl.Session.SwitchToNextSession();
+            TimerControl.TimerButton.Classes.Remove("PauseButton");
+            TimerControl.TimerButton.Classes.Add("StartButton");
+            
+        };
     }
 
     private void ChangeHeaderSessionAnnouncement()
