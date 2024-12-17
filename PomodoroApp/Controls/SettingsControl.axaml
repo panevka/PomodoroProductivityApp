@@ -8,9 +8,6 @@
         <Style Selector="Grid#SettingsLayout">
             <Setter Property="Background" Value="#4b0082"/>
         </Style>
-        <Style Selector="Border#BackgroundOverlay">
-            <Setter Property="Background" Value="#40000000"/>
-        </Style>
         
         <Style Selector="Border#RoundingBorder">
             <Setter Property="Background" Value="#4b0082"/>
@@ -42,7 +39,6 @@
         </Style>
         
     </UserControl.Styles>
-    <Border Name="BackgroundOverlay">
         <Border Name="RoundingBorder" CornerRadius="30" Width="450" Height="350">
             
             <Grid Name="SettingsLayout" RowDefinitions="3*, 2*, 2*, 2*, 1*" ColumnDefinitions="*"  Width="400" Height="350">
@@ -91,8 +87,6 @@
             </Grid>
          
         </Border>
-        
-    </Border>
  
     
 </UserControl>
