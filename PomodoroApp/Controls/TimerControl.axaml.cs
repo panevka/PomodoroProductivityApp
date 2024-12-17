@@ -25,7 +25,7 @@ public partial class TimerControl : UserControl
         
         TimerButton.Click += (sender, args) =>
         {
-            if (_timer.IsRunning)
+            if (!_timer.IsTimerPaused())
             {
                 TimerButton.Classes.Remove("PauseButton");
                 TimerButton.Classes.Add("StartButton");
