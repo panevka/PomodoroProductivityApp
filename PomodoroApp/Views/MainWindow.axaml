@@ -16,6 +16,14 @@
                     Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
                 
+                <Button Name="PreviousSession" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                        Margin="50" Height="50" Width="50">
+                    <TextBlock Text="Prev" Foreground="#ffffff"/>
+                </Button>
+                <Button Name="NextSession" VerticalAlignment="Center" HorizontalAlignment="Right" 
+                        Margin="50">
+                    <TextBlock Text="Next" Foreground="#ffffff"/>
+                </Button>
                 <views:TimerControl Name="TimerControl" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <views:SettingsControl Name="SettingsControl" IsVisible="False"/>
                
