@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -12,72 +13,73 @@ public class TimerManager
     private bool _isPaused = true;
     private readonly object _lock = new();
     private CancellationTokenSource _cancellationTokenSource;
-  
-    public TimerManager(TextBlock timerTextBlock, int timerBaseTime=0)
+
+    public TimerManager(TextBlock timerTextBlock, int timerBaseTime = 0)
     {
         _currentTime = timerBaseTime;
         _timerTextBlock = timerTextBlock;
         UpdateTimerDisplay();
     }
-      
+
     public event EventHandler TimerFinished;
     
-    public bool IsPaused => _isPaused;
+    public bool IsTimerPaused()
+    {
+            return _isPaused; 
+    }
+
     public bool IsRunning => !_isPaused;
 
     public async void StartTimer()
     {
-        lock (_lock)
-        {
-            if (!_isPaused) return; 
-            _isPaused = false;
-            _cancellationTokenSource = new CancellationTokenSource();
-        }
-
+        if (!_isPaused) return;
         try
         {
+            _cancellationTokenSource = new CancellationTokenSource();
             await TimerCountdownTask(_cancellationTokenSource.Token);
         }
-        catch (OperationCanceledException)
+        catch (Exception ex)
         {
-            lock (_lock)
-            {
-                _isPaused = true;
-                _cancellationTokenSource = null;
-            }
+            _cancellationTokenSource = null;
+            Debug.WriteLine($"An unexpected error occurred: {ex.Message}");
+        }
+        finally
+        {
+            _isPaused = true;
         }
     }
 
+
+
     public void StopTimer()
     {
-        lock (_lock)
-        {
-            if (_isPaused) return;
-            _isPaused = true;
             _cancellationTokenSource?.Cancel();
-        }
     }
 
     public void ChangeTimerInitialTime(int newInitialTime)
     {
-        StopTimer();
-        Interlocked.Exchange(ref _currentTime, newInitialTime);
-        UpdateTimerDisplay();
+            if (!_isPaused) StopTimer();
+            _currentTime = newInitialTime;
+            UpdateTimerDisplay();
     }
 
     private async Task TimerCountdownTask(CancellationToken cancellationToken)
     {
-        while (_currentTime >= 0)
+        _isPaused = false;
+        while (_currentTime > 0 && !cancellationToken.IsCancellationRequested)
         {
-            cancellationToken.ThrowIfCancellationRequested();
-            await Task.Delay(1000, cancellationToken);
-            Interlocked.Decrement(ref _currentTime);
+            _currentTime--;
             UpdateTimerDisplay();
+            await Task.Delay(1000, cancellationToken);
         }
-
-        if (!cancellationToken.IsCancellationRequested)
+        _isPaused = true;
+        if (_currentTime == 0 )
         {
             TimerFinished?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            throw new InvalidProgramException("Timer cancelled");
         }
     }
 
