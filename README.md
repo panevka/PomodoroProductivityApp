@@ -1,9 +1,7 @@
 ## Introduction 📢
 
-  <h3>Purpose 🚀</h3>
-    <p>The Pomodoro Time Manager is a lightweight application designed to help individuals stay focused and manage their time effectively.</p>
+  <p>The Pomodoro Time Manager is a lightweight application designed to help individuals stay focused and manage their time effectively.</p>
     
----
 
 <div>
 
