@@ -1,28 +1,28 @@
 ## Introduction 📢
 
-  <p>The Pomodoro Time Manager is a lightweight application designed to help individuals stay focused and manage their time effectively.</p>
-    
-
 <div>
 
-  <div>
-    <img align="left" src="https://github.com/user-attachments/assets/0936a5b6-b2b9-428b-af07-c309d2c41f0f" alt="Pomodoro app screen" title="Pomodoro app screen" width="400">
-  </div>
-
   <div align="left">
-    <h3>💡 Idea & Tech Stack 🛠️</h3>
-    <p>Originally, I built this app for my personal use to help me stay productive during my studies and projects. Creating tools for my own needs is one of the best things in programming, and I'm sharing this app in hopes it can help others too.</p>
-    <ul>
-      <p><strong>Language:</strong> C# (.NET 8+)</p>
-      <p><strong>UI Framework:</strong> Avalonia (Cross-Platform UI Toolkit)</p>
-      <p><strong>Platform:</strong> .NET 8+</p>
-      <p><strong>Asynchronous Programming:</strong> async/await</p>
-    </ul> 
-  
+    <img align="left" src="https://github.com/user-attachments/assets/0936a5b6-b2b9-428b-af07-c309d2c41f0f" alt="Pomodoro app screen" title="Pomodoro app screen" width="400">
+    <br>
   </div>
-
 <br>
-  </div>
+
+<h3>Idea 💡</h3>
+<p><b>The Pomodoro Time Manager is a lightweight application designed to help individuals stay focused and manage their time effectively.</b></p>
+<p>Originally, I built this app for my personal use to help me stay productive during my studies and projects. Creating tools for my own needs is one of the best things in programming and
+  I'm sharing this app hoping others can also make use of it.</p>
+<br>
+
+</div>
+
+## Tech Stack 🛠️
+<ul>
+    <p><strong>Language:</strong> C# (.NET 8+)</p>
+    <p><strong>UI Framework:</strong> Avalonia (Cross-Platform UI Toolkit)</p>
+    <p><strong>Platform:</strong> .NET 8+</p>
+    <p><strong>Asynchronous Programming:</strong> async/await</p>
+</ul> 
 
 ## Features ✨
 - ✅ **Pomodoro Timer**: A built-in timer that automatically alternates between work and rest sessions.
