@@ -69,7 +69,7 @@ dotnet restore
   ```bash
   dotnet publish -c Release -r win-x64 -o ./publish
   ```
-You can also download self-contained, single-file executable from [releases](https://github.com/panevka/PomodoroProductivityApp/releases/tag/v0.1.0).
+  Alternatively you can also download self-contained, single-file executable from [releases](https://github.com/panevka/PomodoroProductivityApp/releases/tag/v0.1.0).
 #### 5. Open the app[^2]
 [^2]: On linux you might have to execute `chmod +x ./PomodoroApp` first, before running `./PomodoroApp`
 ```bash
